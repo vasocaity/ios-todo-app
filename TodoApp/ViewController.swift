@@ -5,7 +5,6 @@
 //  Created by Varaphon Maensiri on 22/7/2561 BE.
 //  Copyright © 2561 Varaphon Maensiri. All rights reserved.
 //
-
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddItemViewControllerDelegate{
@@ -66,7 +65,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         todo.add(item: TodoItem(title: "Test 2"))
         todo.add(item: TodoItem(title: "Learning Swift", isDone: true))
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "openAddPage" {
             let navigationController = segue.destination as? UINavigationController
@@ -79,7 +78,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             controller?.todoItem = sender as? TodoItem
         }
     }
-
+    
 }
-
-

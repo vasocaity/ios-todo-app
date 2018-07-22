@@ -5,18 +5,19 @@
 //  Created by Varaphon Maensiri on 22/7/2561 BE.
 //  Copyright © 2561 Varaphon Maensiri. All rights reserved.
 //
+
 import UIKit
 
 // spec ของคนที่จะเรียก
 protocol AddItemViewControllerDelegate:class {
     // (who call, call ด้วยของอันนี้)
-    func addItemViewController(controller: AddItemViewController, didAdd item: TodoItem)
-    func addItemViewController(controller: AddItemViewController, didEdit item: TodoItem)
-    func addItemViewControllerDidCancel(controller: AddItemViewController)
+    func addItemViewController(controller: ItemDetailViewController, didAdd item: TodoItem)
+    func addItemViewController(controller: ItemDetailViewController, didEdit item: TodoItem)
+    func addItemViewControllerDidCancel(controller: ItemDetailViewController)
 }
 
-class AddItemViewController: UIViewController {
-    
+class ItemDetailViewController: UIViewController {
+
     weak var delegate: AddItemViewControllerDelegate?
     var todoItem: TodoItem?
     @IBOutlet weak var titleTextField: UITextField!
@@ -27,7 +28,7 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap() {
-        
+
         if let title = titleTextField.text, let isDone = isDoneSwitch?.isOn ,!title.isEmpty {
             
             if let item = todoItem {
@@ -63,4 +64,5 @@ class AddItemViewController: UIViewController {
     // ref couting
     // ! คือ มีเสมอ
     // ? มี ไม่มี ก็ได้ดดด
+
 }
