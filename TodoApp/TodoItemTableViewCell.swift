@@ -8,8 +8,21 @@
 
 import UIKit
 
+protocol TodoItemViewCellDelegate:class {
+    func todoItemTableViewCellCheckboxButtonDidTap(cell: TodoItemTableViewCell)
+}
+
 class TodoItemTableViewCell: UITableViewCell {
 
+    weak var delegate:TodoItemViewCellDelegate?
+    
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var checkboxButton: UIButton!
+    
+    @IBAction func checkboxButtonDidTap () {
+        delegate?.todoItemTableViewCellCheckboxButtonDidTap(cell: self)
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

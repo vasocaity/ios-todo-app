@@ -40,6 +40,9 @@
                                                                 <constraint firstAttribute="width" secondItem="nLV-Jq-iTX" secondAttribute="height" multiplier="1:1" id="cg3-mb-Skp"/>
                                                             </constraints>
                                                             <state key="normal" image="uncheck"/>
+                                                            <connections>
+                                                                <action selector="checkboxButtonDidTap" destination="b11-vJ-kCG" eventType="touchUpInside" id="cew-td-oIA"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viT-YK-nN7">
                                                             <rect key="frame" x="41.5" y="0.0" width="280.5" height="35.5"/>
@@ -57,6 +60,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="Y3G-tZ-SaV" secondAttribute="bottom" constant="4" id="n7o-xw-bnQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxButton" destination="nLV-Jq-iTX" id="vbm-pk-WeO"/>
+                                            <outlet property="titleLabel" destination="viT-YK-nN7" id="TY1-90-6hR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

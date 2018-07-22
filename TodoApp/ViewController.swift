@@ -7,7 +7,15 @@
 //
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddItemViewControllerDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddItemViewControllerDelegate, TodoItemViewCellDelegate{
+    
+    func todoItemTableViewCellCheckboxButtonDidTap(cell: TodoItemTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            todo.itemATIndex(at: indexPath.row).toggleIsDone()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,12 +47,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let item = todo.itemATIndex(at: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath)
-        cell.textLabel?.text = todo.itemATIndex(at: indexPath.row).title
-        cell.accessoryType = todo.itemATIndex(at: indexPath.row).isDone ? .checkmark: .none
+            as! TodoItemTableViewCell
+        cell.delegate = self
+        cell.titleLabel.text =  item.title
+        cell.checkboxButton.setImage(UIImage(named: item.isDone ? "check": "uncheck" ), for: .normal)
         return cell
-        //  UITableViewCell() => new instance
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
