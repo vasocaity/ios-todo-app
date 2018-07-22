@@ -34,5 +34,10 @@ class Todo:Codable {
 //            todoItem === item  // === ref ตัวเดียวกัน == เท่ากันเฉยๆ ไม่ใช่ object เดียวกัน
 //        })
     }
+    
+    func move(from sourceIndex: Int, to desitinationIndex: Int) {
+        let item = items.remove(at: sourceIndex)
+        items.insert(item, at: desitinationIndex)
+    }
 }
 

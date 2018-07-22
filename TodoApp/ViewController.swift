@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddItemViewControllerDelegate, TodoItemViewCellDelegate{
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AddItemViewControllerDelegate, TodoItemViewCellDelegate, UITableViewDragDelegate, UITableViewDropDelegate{
     
     func todoItemTableViewCellCheckboxButtonDidTap(cell: TodoItemTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
@@ -16,6 +16,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return [UIDragItem(itemProvider: NSItemProvider())]
+    }
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -52,6 +55,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todo.totalItems
     }
+    /*
+     DRAGE
+     */
+    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+    }
+    func tableView(_ tableView: UITableView, canHandle session: UIDropSession) -> Bool {
+        return session.localDragSession != nil
+    }
+    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
+        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = todo.itemATIndex(at: indexPath.row)
@@ -77,8 +93,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         saveTodo()
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        todo.move(from: sourceIndexPath.row, to: destinationIndexPath.row)
+        saveTodo()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
+        tableView.dropDelegate = self
         loadTodo()
     }
     func loadTodo() {
