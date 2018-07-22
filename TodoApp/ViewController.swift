@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource{
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     var todo = Todo()
     
@@ -25,6 +25,9 @@ class ViewController: UIViewController, UITableViewDataSource{
         //  UITableViewCell() => new instance
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
