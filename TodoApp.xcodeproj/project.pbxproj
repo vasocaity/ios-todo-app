@@ -15,6 +15,7 @@
 		AE4EDF9D210446780047DF8E /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4EDF9C210446780047DF8E /* AddItemViewController.swift */; };
 		AEACD79521047200009517A5 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4EDF9A210437820047DF8E /* Todo.swift */; };
 		AEACD79721047272009517A5 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEACD79621047272009517A5 /* TodoItem.swift */; };
+		AEACD79921047445009517A5 /* TodoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEACD79821047445009517A5 /* TodoItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AE4EDF9A210437820047DF8E /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Todo.swift; path = Models/Todo.swift; sourceTree = "<group>"; };
 		AE4EDF9C210446780047DF8E /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		AEACD79621047272009517A5 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TodoItem.swift; path = Models/TodoItem.swift; sourceTree = "<group>"; };
+		AEACD79821047445009517A5 /* TodoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				AE4EDF9421042AE30047DF8E /* Info.plist */,
 				AE4EDF9A210437820047DF8E /* Todo.swift */,
 				AE4EDF9C210446780047DF8E /* AddItemViewController.swift */,
+				AEACD79821047445009517A5 /* TodoItemTableViewCell.swift */,
 			);
 			path = TodoApp;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				AEACD79721047272009517A5 /* TodoItem.swift in Sources */,
 				AE4EDF8B21042AE10047DF8E /* ViewController.swift in Sources */,
+				AEACD79921047445009517A5 /* TodoItemTableViewCell.swift in Sources */,
 				AE4EDF9D210446780047DF8E /* AddItemViewController.swift in Sources */,
 				AE4EDF8921042AE10047DF8E /* AppDelegate.swift in Sources */,
 				AEACD79521047200009517A5 /* Todo.swift in Sources */,
