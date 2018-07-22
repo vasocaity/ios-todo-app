@@ -39,6 +39,10 @@ class AddItemViewController: UIViewController {
         
     }
     
+    override func viewDidAppear (_ animated: Bool) {
+        super.viewDidAppear(animated)
+        titleTextField.becomeFirstResponder()
+    }
     //outlet คือ วิวที่อ้างอิงถึง
     // action คือให้มันทำไร
     // ref couting
