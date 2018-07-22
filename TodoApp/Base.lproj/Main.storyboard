@@ -61,10 +61,13 @@
                     <navigationItem key="navigationItem" title="Todo" id="Xse-Pl-T5D">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4WP-ib-4eo">
                             <connections>
-                                <segue destination="INq-pW-eKe" kind="presentation" id="YLi-lb-afA"/>
+                                <segue destination="INq-pW-eKe" kind="presentation" identifier="openAddPage" id="YLi-lb-afA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="s02-au-9oY" id="Ytw-Gx-g9z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -77,7 +80,39 @@
                     <view key="view" contentMode="scaleToFill" id="5Do-xp-xEL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="nES-Gt-4Zf">
+                                <rect key="frame" x="15" y="84" width="345" height="68"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H8o-Jh-oHi">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2iE-AS-FOH">
+                                        <rect key="frame" x="0.0" y="37" width="345" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IS DONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="000-mz-BUv">
+                                                <rect key="frame" x="0.0" y="0.0" width="296" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zel-SJ-HEr">
+                                                <rect key="frame" x="296" y="0.0" width="51" height="31"/>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nES-Gt-4Zf" firstAttribute="top" secondItem="MgZ-A9-rne" secondAttribute="top" constant="20" id="TjP-Ro-PKB"/>
+                            <constraint firstItem="nES-Gt-4Zf" firstAttribute="leading" secondItem="MgZ-A9-rne" secondAttribute="leading" constant="15" id="gmW-fV-87Y"/>
+                            <constraint firstItem="MgZ-A9-rne" firstAttribute="trailing" secondItem="nES-Gt-4Zf" secondAttribute="trailing" constant="15" id="tQX-Un-hgz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MgZ-A9-rne"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add new item" id="XCG-z1-EbW">
@@ -92,6 +127,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="isDoneSwitch" destination="Zel-SJ-HEr" id="Mft-I2-VZw"/>
+                        <outlet property="titleTextField" destination="H8o-Jh-oHi" id="mEB-I5-GAx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t0B-kN-0Ve" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

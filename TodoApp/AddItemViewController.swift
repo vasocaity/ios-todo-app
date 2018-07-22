@@ -8,18 +8,30 @@
 
 import UIKit
 
+// spec ของคนที่จะเรียก
+protocol AddItemViewControllerDelegate:class {
+    // (who call, call ด้วยของอันนี้)
+    func addItemViewController(controller: AddItemViewController, didAdd item: TodoItem)
+    func addItemViewControllerDidCancel(controller: AddItemViewController)
+}
+
 class AddItemViewController: UIViewController {
-    //outlet คือ วิวที่อ้างอิงถึง
-    // action คือให้มันทำไร
-    
+
+    weak var delegate: AddItemViewControllerDelegate?
+  
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var isDoneSwitch: UISwitch!
     
     @IBAction func cancelButtonDidTap(_ sender: UIBarButtonItem) {
-        print("cancel")
-        dismiss(animated: true, completion: nil)
+        delegate?.addItemViewControllerDidCancel(controller: self)
     }
     
     @IBAction func doneButtonDidTap() {
         
+        if let title = titleTextField.text, let isDone = isDoneSwitch?.isOn ,!title.isEmpty {
+            let item = TodoItem(title: title, isDone: isDone)
+            delegate?.addItemViewController(controller: self, didAdd: item);
+        }
     }
     
     override func viewDidLoad() {
@@ -27,6 +39,10 @@ class AddItemViewController: UIViewController {
         
     }
     
-    
+    //outlet คือ วิวที่อ้างอิงถึง
+    // action คือให้มันทำไร
+    // ref couting
+    // ! คือ มีเสมอ
+    // ? มี ไม่มี ก็ได้ดดด
 
 }
