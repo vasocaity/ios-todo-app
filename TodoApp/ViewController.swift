@@ -8,18 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource{
+    
+    var todo = Todo()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return todo.totalItems
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "todoItemCell", for: indexPath)
+        cell.textLabel?.text = todo.itemATIndex(at: indexPath.row).title
+        cell.accessoryType = todo.itemATIndex(at: indexPath.row).isDone ? .checkmark: .none
+        return cell
+        //  UITableViewCell() => new instance
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        todo.add(item: TodoItem(title: "Test"))
+        todo.add(item: TodoItem(title: "Test 2"))
+        todo.add(item: TodoItem(title: "Learning Swift", isDone: true))
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
