@@ -12,13 +12,14 @@ import UIKit
 protocol AddItemViewControllerDelegate:class {
     // (who call, call ด้วยของอันนี้)
     func addItemViewController(controller: AddItemViewController, didAdd item: TodoItem)
+    func addItemViewController(controller: AddItemViewController, didEdit item: TodoItem)
     func addItemViewControllerDidCancel(controller: AddItemViewController)
 }
 
 class AddItemViewController: UIViewController {
 
     weak var delegate: AddItemViewControllerDelegate?
-  
+    var todoItem: TodoItem?
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var isDoneSwitch: UISwitch!
     
@@ -27,16 +28,31 @@ class AddItemViewController: UIViewController {
     }
     
     @IBAction func doneButtonDidTap() {
-        
+
         if let title = titleTextField.text, let isDone = isDoneSwitch?.isOn ,!title.isEmpty {
-            let item = TodoItem(title: title, isDone: isDone)
-            delegate?.addItemViewController(controller: self, didAdd: item);
+            
+            if let item = todoItem {
+                item.title = title
+                item.isDone = isDone
+                delegate?.addItemViewController(controller: self, didEdit: item)
+            }else {
+                let item = TodoItem(title: title, isDone: isDone)
+                delegate?.addItemViewController(controller: self, didAdd: item);
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let item = todoItem {
+            titleTextField?.text = item.title
+            isDoneSwitch?.isOn = item.isDone
+            
+            title = "Edit item"
+        }else {
+            title = "Add new item"
+        }
     }
     
     override func viewDidAppear (_ animated: Bool) {
