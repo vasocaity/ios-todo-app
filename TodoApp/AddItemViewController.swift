@@ -19,6 +19,9 @@ class AddItemViewController: UIViewController {
     
     weak var delegate: AddItemViewControllerDelegate?
     var todoItem: TodoItem?
+    var isInEditMode: Bool {
+        return todoItem != nil
+    }
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var isDoneSwitch: UISwitch!
     

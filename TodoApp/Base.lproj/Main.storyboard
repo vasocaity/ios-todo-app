@@ -92,7 +92,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="s02-au-9oY" id="Ytw-Gx-g9z"/>
-                        <segue destination="INq-pW-eKe" kind="presentation" identifier="openEditPage" id="s14-IP-YJr"/>
+                        <segue destination="cXx-Vy-TEa" kind="show" identifier="openEditPage" id="vcc-dR-W95"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -196,13 +196,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dj-4X-0pY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="48.125937031484263"/>
+            <point key="canvasLocation" x="1929" y="377"/>
         </scene>
     </scenes>
     <resources>
         <image name="uncheck" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s14-IP-YJr"/>
+        <segue reference="vcc-dR-W95"/>
     </inferredMetricsTieBreakers>
 </document>
